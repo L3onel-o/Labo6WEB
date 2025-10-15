@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Diario La Ciudad — Edición Digital</title>
+  <style>
+    :root{
+      --accent:#b22222;
+      --bg:#f6f6f4;
+      --card:#ffffff;
+      --muted:#666;
+      --maxw:1100px;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#111;line-height:1.45}
+    .container{max-width:var(--maxw);margin:24px auto;padding:0 16px}
+
+    header.masthead{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+    .logo{display:flex;flex-direction:column}
+    .logo h1{margin:0;font-size:28px;letter-spacing:1px}
+    .logo p{margin:0;color:var(--muted);font-size:13px}
+    nav.mainnav{margin-left:auto}
+    nav.mainnav a{margin-left:12px;color:var(--muted);text-decoration:none;font-weight:600}
+
+    .top{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:18px}
+    .hero{background:linear-gradient(180deg, rgba(178,34,34,0.08), rgba(255,255,255,0));padding:18px;border-radius:8px}
+    .hero h2{margin:0 0 8px 0}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:12px}
+    .hero .thumb{width:100%;height:220px;background:linear-gradient(135deg,#ddd,#bbb);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#777;font-weight:700}
+
+    .card{background:var(--card);padding:14px;border-radius:8px;box-shadow:0 1px 0 rgba(0,0,0,0.05)}
+    .lead{display:flex;gap:12px}
+    .lead img{width:42%;height:160px;object-fit:cover;border-radius:6px}
+    .lead .txt{flex:1}
+    .lead h3{margin:0 0 8px 0}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .news{display:flex;flex-direction:column;gap:8px}
+    .news img{width:100%;height:120px;object-fit:cover;border-radius:6px}
+    .news h4{margin:0;font-size:16px}
+    .news p{margin:0;color:var(--muted);font-size:14px}
+
+    aside.sidebar{display:flex;flex-direction:column;gap:12px}
+    .weather{padding:12px;border-radius:6px;background:linear-gradient(180deg,#fff,#fafafa);text-align:center}
+    .weather .temp{font-size:32px;font-weight:700}
+    .latest{display:flex;flex-direction:column;gap:8px}
+    .latest a{display:block;padding:8px;border-radius:6px;text-decoration:none;color:inherit}
+    .latest a:hover{background:#f1f1f1}
+
+    .sections{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:18px}
+    .article-list{display:grid;gap:12px}
+    .article{display:flex;gap:12px;align-items:flex-start}
+    .article img{width:120px;height:80px;object-fit:cover;border-radius:6px}
+    .article h5{margin:0;font-size:15px}
+    .article p{margin:4px 0 0 0;color:var(--muted);font-size:13px}
+
+    footer{margin-top:18px;padding:14px 0;color:var(--muted);font-size:13px;text-align:center}
+
+    /* small screens */
+    @media (max-width:900px){
+      .top,.sections{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .lead img{width:48%}
+    }
+    @media (max-width:600px){
+      .grid{grid-template-columns:1fr}
+      nav.mainnav{display:none}
+      .lead{flex-direction:column}
+      .lead img{width:100%;height:180px}
+    }
+
+    /* small interactive bits */
+    .search{display:flex;gap:8px}
+    .search input{padding:8px;border-radius:6px;border:1px solid #ddd;flex:1}
+    .btn{background:var(--accent);color:#fff;padding:8px 10px;border-radius:6px;border:none;font-weight:700;cursor:pointer}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="masthead">
+      <div class="logo">
+        <h1>La Ciudad</h1>
+        <p>Noticias generales — Edición digital</p>
+      </div>
+      <div class="search">
+        <input id="q" placeholder="Buscar noticias..." aria-label="buscar noticias">
+        <button id="btnSearch" class="btn">Buscar</button>
+      </div>
+      <nav class="mainnav">
+        <a href="#">Inicio</a>
+        <a href="#">Nacional</a>
+        <a href="#">Mundo</a>
+        <a href="#">Economía</a>
+        <a href="#">Cultura</a>
+      </nav>
+    </header>
+
+    <section class="top">
+      <main class="hero card">
+        <div class="meta">Domingo, 12 de octubre de 2025 · Edición digital</div>
+        <h2>Titular destacado: Avances y retos en la ciudad</h2>
+        <div class="meta">Por: Redacción · Política · 10:30</div>
+        <div class="thumb">IMAGEN DESTACADA</div>
+        <div class="lead" style="margin-top:12px">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%23cccccc'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='28' fill='%23777777'>Foto principal</text></svg>" alt="foto">
+          <div class="txt">
+            <h3>La ciudad afronta nuevos proyectos de infraestructura con debate público</h3>
+            <p class="muted">Resumen: El gobierno local anunció una serie de obras destinadas a mejorar transporte y servicios. Habitantes y gremios demandan transparencia en licitaciones.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card news">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='240'><rect width='100%' height='100%' fill='%23e6e6e6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%23999'>Economía</text></svg>" alt="economia">
+            <h4>Economía local muestra signos de recuperación</h4>
+            <p class="muted">Sectores clave reportan aumento en ventas y empleo.</p>
+          </div>
+
+          <div class="card news">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='240'><rect width='100%' height='100%' fill='%23e6e6e6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%23999'>Mundo</text></svg>" alt="mundo">
+            <h4>Conflictos internacionales y acuerdos comerciales</h4>
+            <p class="muted">Nuevas rondas de diálogo buscan estabilizar la región.</p>
+          </div>
+
+          <div class="card news">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='240'><rect width='100%' height='100%' fill='%23e6e6e6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%23999'>Cultura</text></svg>" alt="cultura">
+            <h4>Festival de arte inicia con presentaciones locales</h4>
+            <p class="muted">Artistas estrenan obras inéditas en distintos recintos.</p>
+          </div>
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="card weather">
+          <div class="muted">Clima — San Salvador</div>
+          <div class="temp">27°C</div>
+          <div class="muted">Soleado · Humedad 60%</div>
+        </div>
+
+        <div class="card latest">
+          <strong>Últimas noticias</strong>
+          <a href="#">Corte aprueba nueva normativa ambiental</a>
+          <a href="#">Empresas tecnológicas anuncian inversiones</a>
+          <a href="#">Equipo local clasifica a la final del torneo</a>
+        </div>
+
+        <div class="card">
+          <strong>Opinión</strong>
+          <p class="muted">Editorial: El rol de la sociedad civil en la planificación urbana.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="sections">
+      <div>
+        <div class="card article-list">
+          <h3>En profundidad</h3>
+
+          <article class="article">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='100%' height='100%' fill='%23ddd'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='16' fill='%23777'>Imagen</text></svg>" alt="img">
+            <div>
+              <h5>Transporte público: proyectos y críticas</h5>
+              <p class="muted">Expertos analizan propuestas de movilidad y su impacto en barrios periféricos.</p>
+            </div>
+          </article>
+
+          <article class="article">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='100%' height='100%' fill='%23ddd'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='16' fill='%23777'>Imagen</text></svg>" alt="img">
+            <div>
+              <h5>Salud pública: campañas de prevención</h5>
+              <p class="muted">Autoridades lanzan nueva campaña de vacunación y pruebas gratuitas.</p>
+            </div>
+          </article>
+
+          <article class="article">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='100%' height='100%' fill='%23ddd'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='16' fill='%23777'>Imagen</text></svg>" alt="img">
+            <div>
+              <h5>Educación: reforma en debate público</h5>
+              <p class="muted">Docentes y estudiantes expresan preocupaciones sobre la implementación.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h4>Economía rápida</h4>
+          <p class="muted">Índices y datos relevantes del día.</p>
+          <ul>
+            <li>Inflación mensual: 0.3%</li>
+            <li>Tipo de cambio: 8.75</li>
+            <li>Mercado: apertura positiva</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Agenda cultural</h4>
+          <p class="muted">Eventos hoy:</p>
+          <ul>
+            <li>Concierto en el teatro municipal — 7:00pm</li>
+            <li>Exposición fotográfica — 4:00pm</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Contacto</h4>
+          <p class="muted">redaccion@laciudad.example · Síguenos en redes</p>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      © 2025 La Ciudad — Periodismo independiente · Hecho con HTML/CSS/JS
+    </footer>
+  </div>
+
+  <script>
+    // Búsqueda simple: filtra titulares de la página
+    const btn = document.getElementById('btnSearch');
+    const q = document.getElementById('q');
+    btn.addEventListener('click', ()=>{
+      const term = q.value.trim().toLowerCase();
+      if(!term){alert('Escribe un término de búsqueda.');return}
+      const matches = [];
+      // buscar en todos los títulos
+      document.querySelectorAll('h2,h3,h4,h5').forEach(el=>{
+        if(el.textContent.toLowerCase().includes(term)) matches.push(el.textContent.trim());
+      });
+      if(matches.length) alert('Resultados:\n- '+matches.join('\n- '));
+      else alert('No se encontraron resultados.');
+    });
+
+    // Añade pequeñas interacciones: clic en noticias muestra detalle simulado
+    document.querySelectorAll('.news, .article').forEach(node=>{
+      node.style.cursor = 'pointer';
+      node.addEventListener('click', ()=>{
+        const title = node.querySelector('h4,h5') ? (node.querySelector('h4,h5').textContent) : 'Noticia';
+        alert(title + '\n\nVer la noticia completa en la edición impresa.');
+      });
+    });
+  </script>
+</body>
+</html>
